@@ -139,8 +139,8 @@
     <xs:restriction base="xs:string">
 	  <xs:pattern value="true" />
 	</xs:restriction>
-  </xs:simpleType>    
-</xs:schema>  <xs:element name="categories">
+  </xs:simpleType>
+  <xs:element name="categories">
       <xs:complexType>
           <xs:sequence>
               <xs:element maxOccurs="unbounded" name="category" >
@@ -167,3 +167,4 @@
           <xs:pattern value="[ACDE]([0-9]){5}" />
       </xs:restriction>
   </xs:simpleType>
+</xs:schema>
