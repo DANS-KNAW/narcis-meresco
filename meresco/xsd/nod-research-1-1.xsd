@@ -18,7 +18,19 @@
 	    <xs:element name="title_nl" type="xs:string"/>
 	    <xs:element name="title_en" type="xs:string"/>
   	    <xs:group   ref="research:summary" />
+  	    <xs:group   ref="research:type" />
 	    <xs:element ref="research:status"/>
+        <xs:element minOccurs="0" name="startdate"/>
+        <xs:element minOccurs="0" name="enddate"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="extern-identifier">
+            <xs:complexType>
+                <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                        <xs:attribute name="type" type="xs:string" use="required"/>
+                    </xs:extension>
+                </xs:simpleContent>
+            </xs:complexType>
+        </xs:element>
 	    <xs:group   minOccurs="0" maxOccurs="unbounded" ref="research:institute"/>
 	    <xs:element minOccurs="0" maxOccurs="unbounded" ref="research:person"/>
 	    <xs:element minOccurs="0" name="invoer_datum" type="xs:date"/>
@@ -43,6 +55,17 @@
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="br" type="xs:string"/>
     </xs:sequence>
+  </xs:complexType>
+  <xs:group name="type">
+      <xs:sequence>
+          <xs:element minOccurs="0" name="type_nl" type="research:type"/>
+          <xs:element minOccurs="0" name="type_en" type="research:type"/>
+      </xs:sequence>
+  </xs:group>
+  <xs:complexType name="type" mixed="true">
+      <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="br" type="xs:string"/>
+      </xs:sequence>
   </xs:complexType>
   <xs:element name="status" type="research:status"/>
   <xs:simpleType name="status">
@@ -83,6 +106,7 @@
         <xs:element name="fullName" type="xs:string"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="research:nameIdentifier"/>
         <xs:element minOccurs="0" ref="research:role"/>
+        <xs:element minOccurs="0" name="werkzaamheid"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>

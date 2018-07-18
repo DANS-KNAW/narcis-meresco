@@ -14,11 +14,17 @@
   <xs:element name="organisatie">
     <xs:complexType>
       <xs:sequence>
+        <xs:element name="identifier" type="xs:string"/>
 	    <xs:element name="naam_nl" type="xs:string"/>
 	    <xs:element minOccurs="0" name="naam_en" type="xs:string"/>
 	    <xs:group   ref="organisation:taak"/>
   	    <xs:element minOccurs="0" name="acroniem" type="xs:string"/>
   	    <xs:element minOccurs="0" name="locatie" type="xs:string"/>
+  	    <xs:element minOccurs="0" name="org_telefoon" type="xs:string"/>
+  	    <xs:element minOccurs="0" name="org_fax" type="xs:string"/>
+  	    <xs:element minOccurs="0" name="org_email" type="xs:string"/>
+  	    <xs:element minOccurs="0" name="org_url" type="xs:string"/>
+  	    <xs:element minOccurs="0" name="org_parent" type="xs:string"/>
 	    <xs:element minOccurs="0" name="invoer_datum" type="xs:date"/>
 	    <xs:element name="url" type="xs:anyURI"/>
 	    <xs:element minOccurs="0" ref="organisation:categories"/>
