@@ -36,6 +36,7 @@
 	    <xs:element minOccurs="0" name="invoer_datum" type="xs:date"/>
 	    <xs:element name="url" type="xs:anyURI"/>
 	    <xs:element minOccurs="0" ref="research:dissertatie"/>
+        <xs:element minOccurs="0" ref="research:categories"/>
 	  </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -139,4 +140,30 @@
 	  <xs:pattern value="true" />
 	</xs:restriction>
   </xs:simpleType>    
-</xs:schema>
+</xs:schema>  <xs:element name="categories">
+      <xs:complexType>
+          <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="category" >
+                  <xs:complexType>
+                      <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="term">
+                              <xs:complexType>
+                                  <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                          <xs:attribute ref="xml:lang"/>
+                                      </xs:extension>
+                                  </xs:simpleContent>
+                              </xs:complexType>
+                          </xs:element>
+                      </xs:sequence>
+                      <xs:attribute name="code" type="research:categoryCode" use="required" />
+                  </xs:complexType>
+              </xs:element>
+          </xs:sequence>
+      </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="categoryCode">
+      <xs:restriction base="xs:string">
+          <xs:pattern value="[ACDE]([0-9]){5}" />
+      </xs:restriction>
+  </xs:simpleType>
