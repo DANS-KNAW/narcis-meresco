@@ -72,7 +72,7 @@
     <xsl:template match="input:org_telefoon">
         <xsl:if test=".">
             <ElectronicAddress>
-                <xsl:value-of select="."/>
+                <xsl:value-of select="concat('tel:', .)"/>
             </ElectronicAddress>
         </xsl:if>
     </xsl:template>
@@ -80,7 +80,7 @@
     <xsl:template match="input:org_fax">
         <xsl:if test=".">
             <ElectronicAddress>
-                <xsl:value-of select="."/>
+                <xsl:value-of select="concat('fax:', .)"/>
             </ElectronicAddress>
         </xsl:if>
     </xsl:template>
@@ -88,7 +88,7 @@
     <xsl:template match="input:org_email">
         <xsl:if test=".">
             <ElectronicAddress>
-                <xsl:value-of select="."/>
+                <xsl:value-of select="concat('mailto:', .)"/>
             </ElectronicAddress>
         </xsl:if>
     </xsl:template>
@@ -96,7 +96,7 @@
     <xsl:template match="input:org_url">
         <xsl:if test=".">
             <ElectronicAddress>
-                <xsl:value-of select="."/>
+                <xsl:value-of select="concat('url:', .)"/>
             </ElectronicAddress>
         </xsl:if>
     </xsl:template>
