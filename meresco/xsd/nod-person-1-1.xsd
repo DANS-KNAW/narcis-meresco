@@ -4,6 +4,12 @@
 *                            PERSON 1.1
 *
 *                            October 24, 2017
+*
+*                            ================
+*                            Juli 18, 2018
+*                            addition of 'identifier', 'surname',
+*                            'initials' and 'person_url'
+*                            ================
 *****************************************************************
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"

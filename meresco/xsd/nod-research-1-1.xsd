@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
+<!--
 ****************************************************************
-*                            RESEARCH 1.1                                    
-*                                                                               
-*                            October 26, 2017                 
+*                            RESEARCH 1.1
+*
+*                            October 26, 2017
+*
+*                            ================
+*                            Juli 18, 2018
+*                            addition of 'type', 'startdate',
+*                            'enddate', 'extern-identifier',
+*                            'categories' and 'werkzaamheid'
+*                            ================
 *****************************************************************
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
@@ -100,7 +107,7 @@
     <xs:restriction base="xs:string">
 	  <xs:pattern value="ORG([0-9]){7}" />
 	</xs:restriction>
-  </xs:simpleType>  
+  </xs:simpleType>
   <xs:element name="person">
     <xs:complexType>
       <xs:sequence>
