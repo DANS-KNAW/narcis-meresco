@@ -15,62 +15,101 @@
 
     <xsl:template match="/">
         <OrgUnit>
-            <xsl:attribute name="id">
-                <xsl:value-of select="input:organisatie/input:identifier"/>
-            </xsl:attribute>
-
-            <xsl:if test="input:organisatie/input:acroniem">
-                <Acronym>
-                    <xsl:value-of select="input:organisatie/input:acroniem"/>
-                </Acronym>
-            </xsl:if>
-
-            <xsl:if test="input:organisatie/input:naam_nl">
-                <Name xml:lang="nl">
-                    <xsl:value-of select="input:organisatie/input:naam_nl"/>
-                </Name>
-            </xsl:if>
-
-            <xsl:if test="input:organisatie/input:naam_en">
-                <Name xml:lang="en">
-                    <xsl:value-of select="input:organisatie/input:naam_en"/>
-                </Name>
-            </xsl:if>
-
-            <xsl:if test="input:organisatie/input:org_telefoon">
-                <ElectronicAddress>
-                    <xsl:value-of select="concat('tel:', input:organisatie/input:org_telefoon)"/>
-                </ElectronicAddress>
-            </xsl:if>
-
-            <xsl:if test="input:organisatie/input:org_fax">
-                <ElectronicAddress>
-                    <xsl:value-of select="concat('fax:', input:organisatie/input:org_fax)"/>
-                </ElectronicAddress>
-            </xsl:if>
-
-            <xsl:if test="input:organisatie/input:org_email">
-                <ElectronicAddress>
-                    <xsl:value-of select="concat('mailto:', input:organisatie/input:org_email)"/>
-                </ElectronicAddress>
-            </xsl:if>
-
-            <xsl:if test="input:organisatie/input:org_url">
-                <ElectronicAddress>
-                    <xsl:value-of select="concat('url:', input:organisatie/input:org_url)"/>
-                </ElectronicAddress>
-            </xsl:if>
-
-            <xsl:if test="input:organisatie/input:org_parent">
-                <PartOf>
-                    <OrgUnit>
-                        <xsl:attribute name="id">
-                            <xsl:value-of select="input:organisatie/input:org_parent"/>
-                        </xsl:attribute>
-                    </OrgUnit>
-                </PartOf>
-            </xsl:if>
+            <xsl:apply-templates select="input:organisatie"/>
         </OrgUnit>
     </xsl:template>
 
+    <xsl:template match="input:organisatie">
+        <xsl:apply-templates select="input:identifier"/>
+
+        <xsl:apply-templates select="input:acroniem"/>
+
+        <xsl:apply-templates select="input:naam_nl"/>
+
+        <xsl:apply-templates select="input:naam_en"/>
+
+        <xsl:apply-templates select="input:org_telefoon"/>
+
+        <xsl:apply-templates select="input:org_fax"/>
+
+        <xsl:apply-templates select="input:org_email"/>
+
+        <xsl:apply-templates select="input:org_url"/>
+
+        <xsl:apply-templates select="input:org_parent"/>
+    </xsl:template>
+
+    <xsl:template match="input:identifier">
+        <xsl:attribute name="id">
+            <xsl:value-of select="."/>
+        </xsl:attribute>
+    </xsl:template>
+
+    <xsl:template match="input:acroniem">
+        <xsl:if test=".">
+            <Acronym>
+                <xsl:value-of select="."/>
+            </Acronym>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="input:naam_nl">
+        <xsl:if test=".">
+            <Naam xml:lang="nl">
+                <xsl:value-of select="."/>
+            </Naam>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="input:naam_en">
+        <xsl:if test=".">
+            <Naam xml:lang="en">
+                <xsl:value-of select="."/>
+            </Naam>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="input:org_telefoon">
+        <xsl:if test=".">
+            <ElectronicAddress>
+                <xsl:value-of select="."/>
+            </ElectronicAddress>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="input:org_fax">
+        <xsl:if test=".">
+            <ElectronicAddress>
+                <xsl:value-of select="."/>
+            </ElectronicAddress>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="input:org_email">
+        <xsl:if test=".">
+            <ElectronicAddress>
+                <xsl:value-of select="."/>
+            </ElectronicAddress>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="input:org_url">
+        <xsl:if test=".">
+            <ElectronicAddress>
+                <xsl:value-of select="."/>
+            </ElectronicAddress>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="input:org_parent">
+        <xsl:if test=".">
+            <PartOf>
+                <OrgUnit>
+                    <xsl:attribute name="id">
+                        <xsl:value-of select="."/>
+                    </xsl:attribute>
+                </OrgUnit>
+            </PartOf>
+        </xsl:if>
+    </xsl:template>
 </xsl:stylesheet>
