@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
+<!--
 ****************************************************************
-*                            PERSON 1.1                                    
-*                                                                               
-*                            October 24, 2017                 
+*                            PERSON 1.1
+*
+*                            October 24, 2017
 *****************************************************************
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
@@ -23,11 +23,7 @@
   	    <xs:element minOccurs="0" name="titulatuur" type="xs:string"/>
 	    <xs:element minOccurs="0" name="titulatuur_achter" type="xs:string"/>
 	    <xs:element minOccurs="0" ref="person:jobs"/>
-        <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element name="person_url" type="xs:string"/>
-            <xs:element name="person_email" type="xs:string"/>
-            <xs:element name="person_phone" type="xs:string"/>
-        </xs:choice>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="person_url" type="xs:string"/>
 	    <xs:element maxOccurs="unbounded" ref="person:nameIdentifier"/>
 	    <xs:element minOccurs="0" ref="person:categories"/>
 	    <xs:element minOccurs="0" ref="person:prices"/>
@@ -68,7 +64,7 @@
     <xs:restriction base="xs:string">
       <xs:pattern value="[a-zA-Z][a-zA-Z][a-zA-Z]|UD"/>
     </xs:restriction>
-  </xs:simpleType>  
+  </xs:simpleType>
   <xs:element name="organisatie">
     <xs:complexType>
       <xs:simpleContent>
@@ -128,5 +124,5 @@
         <xs:element maxOccurs="unbounded" name="price" type="xs:string"/>
       </xs:sequence>
     </xs:complexType>
-  </xs:element>  
+  </xs:element>
 </xs:schema>
