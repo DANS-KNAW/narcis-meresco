@@ -31,7 +31,7 @@
             &lt;creatorName&gt;Werkgroep havens IJsselmeergbied&lt;/creatorName&gt;
         &lt;/creator&gt;
         &lt;creator&gt;
-            &lt;creatorName&gt;Rijksdienst voor de IJsselmeerpolders, Lelystad&lt;/creatorName&gt;
+            &lt;creatorName nameType="corporate"&gt;Rijksdienst voor de IJsselmeerpolders, Lelystad&lt;/creatorName&gt;
         &lt;/creator&gt;
         &lt;creator&gt;
             &lt;creatorName&gt;door werkgroep havens IJsselmeergebied&lt;/creatorName&gt;
@@ -127,6 +127,7 @@
     &lt;record&gt;
     &lt;id&gt;rapporten:550000001&lt;/id&gt;
         &lt;harvestdate&gt;2018-01-05T13:46:09Z&lt;/harvestdate&gt;
+        &lt;metadataNamespace&gt;http://datacite.org/schema/kernel-4&lt;/metadataNamespace&gt;
     &lt;/record&gt;
     &lt;repository&gt;
         &lt;id&gt;rce&lt;/id&gt;
