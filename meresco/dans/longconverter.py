@@ -769,7 +769,7 @@ class NormaliseOaiRecord(UiaConverter):
                     nameidentifiers = name.xpath('self::mods:name/mods:nameIdentifier', namespaces=namespacesmap)
                     for nid in nameidentifiers:
                         nid_type = nid.get("type")
-                        if nid_type in supportedNids:
+                        if nid_type in supportedNids and nid.text:
                             nameId = NameIdentifierFactory.factory(nid_type, nid.text)
                             if nameId.is_valid():
                                 if nameId.get_name() == supportedNids[0]: # Add valid DAI Identifiers to a temp-dai-container.
