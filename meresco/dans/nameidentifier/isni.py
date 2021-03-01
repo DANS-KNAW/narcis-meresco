@@ -9,7 +9,7 @@ class Isni(NameIdentifier):
 
     def __init__(self, basevalue):
         NameIdentifier.__init__(self, 'isni', basevalue,
-                                ['http://isni.org/isni/', 'isni.org/isni/',
+                                ['http://isni.org/isni/', 'https://isni.org/isni/', 'isni.org/isni/',
                                  'ISNI '])  # , 'http://isni-url.oclc.nl/isni/'
 
     def validate_and_initialize(self):

@@ -8,7 +8,7 @@ class Grid(NameIdentifier):
     ID_PATTERN = compile(r'.*?(grid\.\d{4,6}\.[a-f0-9]{1,2})$', IGNORECASE)
 
     def __init__(self, baseDigits):
-        NameIdentifier.__init__(self, "grid", baseDigits, ['https://www.grid.ac/institutes/'])
+        NameIdentifier.__init__(self, "grid", baseDigits, ['https://grid.ac/institutes/', 'https://www.grid.ac/institutes/'])
 
     def validate_and_initialize(self):
         m = self.get_idpattern().match(self.init_value)

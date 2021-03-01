@@ -7,7 +7,7 @@ class Viaf(NameIdentifier):
     ID_PATTERN = compile(r'^(https?://viaf.org/viaf/|viaf.org/viaf/)?([1-9]\d(\d{0,7}|\d{17,20}))$', IGNORECASE)
 
     def __init__(self, baseDigits):
-        NameIdentifier.__init__(self, "viaf", baseDigits, ['https://viaf.org/viaf/'])
+        NameIdentifier.__init__(self, "viaf", baseDigits, ['https://viaf.org/', 'https://viaf.org/viaf/'])
 
     def validate_and_initialize(self):
         m = self.get_idpattern().match(self.init_value)
