@@ -116,8 +116,7 @@ class NormaliseOaiRecord(UiaConverter):
         self._accesRights = NormaliseOaiRecord.ACCESS_LEVELS[0] # AccesRights defaults to 'openAcces'
         self._iso639_languagePattern = compile('^([A-Za-z]{2,3})(-[a-zA-Z0-9]{1,8})?$') # See https://tools.ietf.org/html/rfc3066 and https://nl.wikipedia.org/wiki/ISO_639
         self._rfc5646_languagePattern = compile('^([A-Za-z]{2,3})(-[a-zA-Z0-9]{1,8})*$') # See https://tools.ietf.org/html/rfc5646
-
-    self._initDbProperties()
+        self._initDbProperties()
 
 
     def _initDbProperties(self):
