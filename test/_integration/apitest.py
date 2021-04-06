@@ -368,7 +368,7 @@ class ApiTest(IntegrationTestCase):
         self.assertEqual('http://repository-acc.ubn.ru.nl/handle/123456789/126651', testNamespaces.xpathFirst(response, '//long:metadata/long:related_identifier/text()'))
         self.assertEqual('http://repository.cwi.nl/search/fullrecord.php?publnr=2271', testNamespaces.xpathFirst(response, '//long:metadata/long:location_url/text()'))
         self.assertEqual('text', testNamespaces.xpathFirst(response, '//long:metadata/long:typeOfResource/text()'))
-        self.assertEqual('en', testNamespaces.xpathFirst(response, '//long:metadata/long:language/text()'))
+        self.assertEqual('zh', testNamespaces.xpathFirst(response, '//long:metadata/long:language/text()'))
         self.assertEqual('info:eu-repo/grantAgreement/EC/FP7/282797', testNamespaces.xpathFirst(response, '//long:metadata/long:grantAgreements/long:grantAgreement/long:code/text()'))
         self.assertEqual('00k4n6c32', testNamespaces.xpathFirst(response, '//long:metadata/long:grantAgreements/long:grantAgreement/long:funderIdentifier/text()'))
         self.assertEqual('EERA Design Tools for Offshore Wind Farm Cluster (EERA-DTOC)', testNamespaces.xpathFirst(response, '//long:metadata/long:grantAgreements/long:grantAgreement/long:title/text()'))

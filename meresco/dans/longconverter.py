@@ -114,9 +114,10 @@ class NormaliseOaiRecord(UiaConverter):
         self._metadataformat = None
         self._wcpcollection = None
         self._accesRights = NormaliseOaiRecord.ACCESS_LEVELS[0] # AccesRights defaults to 'openAcces'
-        self._languagePattern = compile('^([A-Za-z]{2,3})(-[a-zA-Z0-9]{1,8})?$') # Captures first 2 or 3 language chars if nothing else OR followed by '-' and 1 to 8 alfanum chars. See also: ftp://ftp.rfc-editor.org/in-notes/rfc3066.txt 
-        
-        self._initDbProperties()        
+        self._iso639_languagePattern = compile('^([A-Za-z]{2,3})(-[a-zA-Z0-9]{1,8})?$') # See https://tools.ietf.org/html/rfc3066 and https://nl.wikipedia.org/wiki/ISO_639
+        self._rfc5646_languagePattern = compile('^([A-Za-z]{2,3})(-[a-zA-Z0-9]{1,8})*$') # See https://tools.ietf.org/html/rfc5646
+
+    self._initDbProperties()
 
 
     def _initDbProperties(self):
@@ -1175,16 +1176,22 @@ class NormaliseOaiRecord(UiaConverter):
         if self._metadataformat.isDatacite():
             language = lxmlNode.xpath("//datacite:resource/datacite:language/text()", namespaces=namespacesmap)
             if len(language) > 0:
-                m = self._languagePattern.match(language[0])
+                m = self._iso639_languagePattern.match(language[0])
                 if m and m.group(1).lower() in ISO639:
                     etree.SubElement(e_longmetadata, "language").text = language[0].lower()
         else:
             # SSDC mandates iso639-1, SSMODS mandates iso639-1 or iso639-2 if iso639-1 is not available, but we'll settle for either 2 or 3 chars.
             rfc3066_language = self._findFirstXpath(lxmlNode, "//mods:mods/mods:language/mods:languageTerm[@type='code' and @authority='rfc3066']/text()", "//dc:language[1]/text()") #Greedy fallback DC. If all else fails...
             if len(rfc3066_language) > 0:
-                m = self._languagePattern.match(rfc3066_language[0])
+                m = self._iso639_languagePattern.match(rfc3066_language[0])
                 if m and m.group(1).lower() in ISO639:
                     etree.SubElement(e_longmetadata, "language").text = m.group(1).lower()
+            else:
+                rfc5646_language = self._findFirstXpath(lxmlNode, "//mods:mods/mods:language/mods:languageTerm[@type='code' and @authority='rfc5646']/text()", "//dc:language[1]/text()") #Greedy fallback DC. If all else fails...
+                if len(rfc5646_language) > 0:
+                    m = self._rfc5646_languagePattern.match(rfc5646_language[0])
+                    if m and m.group(1).lower() in ISO639:
+                        etree.SubElement(e_longmetadata, "language").text = m.group(1).lower()
 
     def _getLocationUrl(self, lxmlNode, e_longmetadata):
         # FMODS only.
