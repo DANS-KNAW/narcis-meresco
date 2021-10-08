@@ -87,7 +87,7 @@
         &lt;format&gt;application/pdf&lt;/format&gt;
     &lt;/formats&gt;
     &lt;rightsList&gt;
-        &lt;rights&gt;info:eu-repo/semantics/openAccess&lt;/rights&gt;
+        &lt;rights rightsURI=&quot;info:eu-repo/semantics/restrictedAccess&quot;&gt;&lt;/rights&gt;
     &lt;/rightsList&gt;
     &lt;sizes&gt;
         &lt;size&gt;114 p.&lt;/size&gt;
