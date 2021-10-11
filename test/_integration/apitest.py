@@ -167,7 +167,7 @@ class ApiTest(IntegrationTestCase):
 
         ddItems = xpath(response, '//drilldown:term-drilldown/drilldown:navigator[@name="access"]/drilldown:item')
         drilldown = [(i.text, i.attrib['count']) for i in ddItems]
-        self.assertEqual([('openAccess', '6'), ('restrictedAccess', '3'), ('embargoedAccess', '2')], drilldown)
+        self.assertEqual([('openAccess', '5'), ('restrictedAccess', '4'), ('embargoedAccess', '2')], drilldown)
 
         ddItems = xpath(response, '//drilldown:term-drilldown/drilldown:navigator[@name="genre"]/drilldown:item')
         drilldown = [(i.text, i.attrib['count']) for i in ddItems]
@@ -439,6 +439,9 @@ class ApiTest(IntegrationTestCase):
         self.assertEqual(8, len(testNamespaces.xpath(response, '//long:metadata/long:subject[not(@xml:lang)]/long:topic')))
         self.assertEqual(2, len(testNamespaces.xpath(response, '//long:metadata/long:abstract')))
         self.assertEqual(4, len(testNamespaces.xpath(response, '//long:metadata/long:geoLocations/long:geoLocation')))
+
+        response = self.doSruQuery(**{'query': 'urn:nbn:nl:ui:13-0q1n-dp', 'recordSchema':'knaw_long'})
+        self.assertEqual('restrictedAccess', testNamespaces.xpathFirst(response, '//long:accessRights/text()'))
 
     def testProjectToShort(self):
         response = self.doSruQuery(**{'query': 'OND1272024', 'recordSchema':'knaw_short'})

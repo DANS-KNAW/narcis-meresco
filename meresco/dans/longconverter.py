@@ -708,10 +708,13 @@ class NormaliseOaiRecord(UiaConverter):
                             break
                     if blnHasValidRight: break
         elif self._metadataformat.isDatacite():
-            rights = lxmlNode.xpath('//datacite:resource/datacite:rightsList/datacite:rights/text()', namespaces=namespacesmap)
+            rights = self._findFirstXpath(lxmlNode,
+                                          "//datacite:resource/datacite:rightsList/datacite:rights/text()",
+                                          "//datacite:resource/datacite:rightsList/datacite:rights/@rightsURI",
+                                          "//datacite:resource/datacite:rightsList/datacite:rights/@rightsIdentifier")
             if len(rights) > 0:
+                blnHasValidRight = False
                 for right in rights: # Look for the first valid edustandaard occurence
-                    blnHasValidRight = False
                     for ar in NormaliseOaiRecord.ACCESS_LEVELS:
                         if ar.lower() in right.strip().lower():
                             accessRight = ar
