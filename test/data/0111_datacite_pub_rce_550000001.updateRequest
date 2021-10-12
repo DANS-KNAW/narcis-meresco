@@ -88,6 +88,7 @@
     &lt;/formats&gt;
     &lt;rightsList&gt;
         &lt;rights rightsURI=&quot;info:eu-repo/semantics/restrictedAccess&quot;&gt;&lt;/rights&gt;
+        &lt;rights&gt;The standard Data Sharing Agreement (DSA) of the UMC Utrecht must be signed without adjustments. This DSA is in compliance with Dutch law. No costs are involved.&lt;/rights&gt;
     &lt;/rightsList&gt;
     &lt;sizes&gt;
         &lt;size&gt;114 p.&lt;/size&gt;
